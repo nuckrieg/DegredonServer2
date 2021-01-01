@@ -10,9 +10,9 @@ package com.mycompany.degredonserver;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import com.mycompany.degredon.Calculator;
-import com.mycompany.degredon.Enemy;
-import com.mycompany.degredon.Player;
+//import com.mycompany.degredon.Calculator;
+//import com.mycompany.degredon.Enemy;
+//import com.mycompany.degredon.Player;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -87,12 +87,14 @@ public class Server {
 
                 final Player finalPlayer1 = allPlayers[0];
                 final Player finalPlayer2 = allPlayers[1];
+                allPlayers[0] = null;
+                allPlayers[1] = null;
                 finalPlayer1.setName("Nuckrieg");
                 finalPlayer2.setName("O Mega Bot!");
                 System.out.println("TEMOS JOGO BOYS!");
                 Calculator game = new Calculator();
                 game.fight(finalPlayer1, finalPlayer2);
-                allPlayers = null;
+                
             }
 
         }
