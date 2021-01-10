@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.degredonserver;
+package com.mycompany.degredonserver.panels;
 
+import com.mycompany.degredonserver.specifics.Server;
 import java.awt.event.ActionEvent;
 import javax.swing.JComponent;
 import javax.swing.JFrame;

@@ -3,9 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.degredonserver;
+package com.mycompany.degredonserver.panels;
 
-import static com.mycompany.degredonserver.Server.SERVERVERSION2;
+import com.mycompany.degredonserver.main.Main;
+import com.mycompany.degredonserver.specifics.Server;
+import com.mycompany.degredonserver.panels.ConfPanel;
+import static com.mycompany.degredonserver.specifics.Server.SERVERVERSION2;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

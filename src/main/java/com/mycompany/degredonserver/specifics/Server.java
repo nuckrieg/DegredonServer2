@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.degredonserver;
+package com.mycompany.degredonserver.specifics;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,6 +13,9 @@ package com.mycompany.degredonserver;
 //import com.mycompany.degredon.Calculator;
 //import com.mycompany.degredon.Enemy;
 //import com.mycompany.degredon.Player;
+import com.nuckrieg.degredon.specifics.Enemy;
+import com.nuckrieg.degredon.specifics.Player;
+import com.nuckrieg.degredon.functions.Calculator;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -34,7 +37,7 @@ public class Server {
     static Player[] allPlayers = new Player[2];
     static Socket socket = null;
     static ServerSocket listener = null;
-    boolean serverStarted = false;
+    public boolean serverStarted = false;
     public static int serverPort = 12345;
     public static final String SERVERVERSION1 = "0.0.1-ALPHA";
     public static String SERVERVERSION2 = System.getProperty("SERVERVERSION",SERVERVERSION1);
