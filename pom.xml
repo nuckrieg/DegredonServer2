@@ -23,7 +23,7 @@
                     <archive>
                         <manifest>
                             <mainClass>
-                                com.mycompany.DegredonServer.Main
+                                com.mycompany.degredonserver.main.Main
                             </mainClass>
                         </manifest>
                     </archive>
