@@ -142,97 +142,58 @@ public class Server {
                 sendToPlayerTwo.writeObject(finalPlayer1);
                 sendToPlayerOne.writeObject(background);
                 sendToPlayerTwo.writeObject(background);
+                sendToPlayerOne.writeObject(game);
+                sendToPlayerTwo.writeObject(game);
                 //  sendToPlayerTwo.writeObject(player2Frame);
                 
-                sendToPlayerOne.writeObject("###############################");
-                sendToPlayerTwo.writeObject("###############################");
-                sendToPlayerOne.writeObject("STARTING GAME!");
-                sendToPlayerTwo.writeObject("STARTING GAME!");
+//                sendToPlayerOne.writeObject("###############################");
+//                sendToPlayerTwo.writeObject("###############################");
+//                sendToPlayerOne.writeObject("STARTING GAME!");
+//                sendToPlayerTwo.writeObject("STARTING GAME!");
 
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
 
-                        do {
-                            try {
-                                Thread.sleep(500);
-                                //System.out.println("DELAYING " + (long) game.getAttackDelay(finalPlayer1));
-                                Thread.sleep((long) game.getAttackDelay(finalPlayer1));
-                                float p1DamageDealt = game.fight(finalPlayer1, finalPlayer2);
-                                game.setCurrentHp(finalPlayer2, p1DamageDealt);
-                                if (game.getCurrentHp(finalPlayer1) <= 0 || game.getCurrentHp(finalPlayer2) <= 0) {
-                                    break;
-                                }
-
-                                sendToPlayerOne.writeObject("YOU DEALT " + p1DamageDealt + "!");
-
-                                sendToPlayerTwo.writeObject("YOU TOOK " + p1DamageDealt + "!");
-                                sendToPlayerOne.writeObject("ENEMY HAS " + game.getCurrentHp(finalPlayer2) + " HP LEFT!");
-                                sendToPlayerTwo.writeObject("YOU HAVE " + game.getCurrentHp(finalPlayer2) + " HP LEFT!");
-                                //sendToPlayerOne.writeObject(p1DamageDealt);
-                            } catch (InterruptedException | IOException ex) {
-                                Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                        } while (finalPlayer1.getCurrentHp() > 0 && finalPlayer2.getCurrentHp() > 0);
-                        if (finalPlayer1.getCurrentHp() <= 0 && finalPlayer2.getCurrentHp() > 0) {
-                            gameResult = "YOU LOSE!";
-                        } else if (finalPlayer2.getCurrentHp() <= 0 && finalPlayer1.getCurrentHp() > 0) {
-                            gameResult = "YOU WIN!";
-                        } else {
-                            gameResult = "IT'S A TIE!\n"
-                                    + "Your HP : " + finalPlayer1.getCurrentHp() + "\n"
-                                    + "Enemy HP:" + finalPlayer2.getCurrentHp();
-
-                        }
-                        try {
-                            sendToPlayerOne.writeObject(gameResult);
-                        } catch (IOException ex) {
-                            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    }
-
-                }).start();
 
                 
 
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        do {
-                            try {
-                                Thread.sleep(500);
-                                //System.out.println("DELAYING " + (long) game.getAttackDelay(finalPlayer2));
-                                Thread.sleep((long) game.getAttackDelay(finalPlayer2));
-                                float p2DamageDealt = game.fight(finalPlayer2, finalPlayer1);
-                                game.setCurrentHp(finalPlayer1, p2DamageDealt);
-                                if (game.getCurrentHp(finalPlayer1) <= 0 || game.getCurrentHp(finalPlayer2) <= 0) {
-                                    break;
-                                }
-                                sendToPlayerTwo.writeObject("YOU DEALT " + p2DamageDealt + "!");
-                                sendToPlayerOne.writeObject("YOU TOOK " + p2DamageDealt + "!");
-                                sendToPlayerTwo.writeObject("ENEMY HAS " + game.getCurrentHp(finalPlayer1) + " HP LEFT!");
-                                sendToPlayerOne.writeObject("YOU HAVE " + game.getCurrentHp(finalPlayer1) + " HP LEFT!");
-                                //sendToPlayerOne.writeObject(p1DamageDealt);
-                            } catch (InterruptedException | IOException ex) {
-                                Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                        } while (finalPlayer1.getCurrentHp() > 0 && finalPlayer2.getCurrentHp() > 0);
-                        if (finalPlayer1.getCurrentHp() <= 0 && finalPlayer2.getCurrentHp() > 0) {
-                            gameResult = "YOU WIN!";
-                        } else if (finalPlayer2.getCurrentHp() <= 0 && finalPlayer1.getCurrentHp() > 0) {
-                            gameResult = "YOU LOSE!";
-                        } else {
-                            gameResult = "IT'S A TIE!\n"
-                                    + "Your HP : " + finalPlayer2.getCurrentHp() + "\n"
-                                    + "Enemy HP:" + finalPlayer1.getCurrentHp();
-                        }
-                        try {
-                            sendToPlayerTwo.writeObject(gameResult);
-                        } catch (IOException ex) {
-                            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    }
-                }).start();
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        do {
+//                            try {
+//                                Thread.sleep(500);
+//                                //System.out.println("DELAYING " + (long) game.getAttackDelay(finalPlayer2));
+//                                Thread.sleep((long) game.getAttackDelay(finalPlayer2));
+//                                float p2DamageDealt = game.fight(finalPlayer2, finalPlayer1);
+//                                game.setCurrentHp(finalPlayer1, p2DamageDealt);
+//                                sendToPlayerTwo.writeObject(game);
+//                                if (game.getCurrentHp(finalPlayer1) <= 0 || game.getCurrentHp(finalPlayer2) <= 0) {
+//                                    break;
+//                                }
+//                                sendToPlayerTwo.writeObject("YOU DEALT " + p2DamageDealt + "!");
+//                                sendToPlayerOne.writeObject("YOU TOOK " + p2DamageDealt + "!");
+//                                sendToPlayerTwo.writeObject("ENEMY HAS " + game.getCurrentHp(finalPlayer1) + " HP LEFT!");
+//                                sendToPlayerOne.writeObject("YOU HAVE " + game.getCurrentHp(finalPlayer1) + " HP LEFT!");
+//                                //sendToPlayerOne.writeObject(p1DamageDealt);
+//                            } catch (InterruptedException | IOException ex) {
+//                                Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+//                            }
+//                        } while (finalPlayer1.getCurrentHp() > 0 && finalPlayer2.getCurrentHp() > 0);
+//                        if (finalPlayer1.getCurrentHp() <= 0 && finalPlayer2.getCurrentHp() > 0) {
+//                            gameResult = "YOU WIN!";
+//                        } else if (finalPlayer2.getCurrentHp() <= 0 && finalPlayer1.getCurrentHp() > 0) {
+//                            gameResult = "YOU LOSE!";
+//                        } else {
+//                            gameResult = "IT'S A TIE!\n"
+//                                    + "Your HP : " + finalPlayer2.getCurrentHp() + "\n"
+//                                    + "Enemy HP:" + finalPlayer1.getCurrentHp();
+//                        }
+//                        try {
+//                            sendToPlayerTwo.writeObject(gameResult);
+//                        } catch (IOException ex) {
+//                            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+//                        }
+//                    }
+//                }).start();
 
 //                oos.flush();
             }
